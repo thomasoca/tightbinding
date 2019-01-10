@@ -51,36 +51,12 @@ for i in xrange(N):
     
 ET = np.concatenate((eP2,eP))
 ET2 = np.concatenate((eN2,eN))
-k_x1 = 0
-k_y1 = 0
-k_x = (2*np.pi/(np.sqrt(3)*a))
-k_y = (2*np.pi/(3*a))
-for i in xrange(N):
-    #calculate gamma-K path
-    dx1 = (2*np.pi/(np.sqrt(3)*a))/N
-    dy1 = (2*np.pi/(3*a))/N
-    res = Ep(k_x1,k_y1,a,t,0)
-    eP2[i] = res[0]
-    eN2[i] = res[1]
-    k_x1 = k_x1+dx1
-    k_y1 = k_y1+dy1
-    
-    #calculate K- M path
-    dx = (2*np.pi/(np.sqrt(3)*a))
-    dy = (2*np.pi/(3*a))/N
-    res2 = Ep(k_x,k_y,a,t,0)
-    
-    k_x = dx
-    k_y = k_y-dy
-ET3 = np.concatenate((eP2,eP))
-ET4 = np.concatenate((eN2,eN))
-plt.plot(ET,'b',label='s0=0.129')
+
+plt.plot(ET,'b')
 plt.plot(ET2,'b')
-plt.plot(ET3,'k--',label='s0=0')
-plt.plot(ET4,'k--')
+
 plt.xticks( [0, 100, 200],['$\Gamma$', "K", 'M'])
 plt.axvline(0, color='k', linestyle='dashed', linewidth=1)
 plt.axvline(100, color='k', linestyle='dashed', linewidth=1)
 plt.axvline(200, color='k', linestyle='dashed', linewidth=1)
-plt.legend()
 plt.show()
